@@ -33,19 +33,25 @@ body {
 
 .main-layout form {
   width: 25%;
-}
-
-.main-layout .table-container {
-  width: 75%;
-  overflow-x: auto;
-}
-
-form {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+}
+
+.main-layout .table-container {
+  width: 75%;
+  overflow-x: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
 }
 
 label {
@@ -58,9 +64,22 @@ input[type="text"],
 input[type="tel"] {
   width: 100%;
   padding: 8px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.warning {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 105%;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
+  font-weight: bold;
 }
 
 button {
@@ -75,13 +94,6 @@ button {
 
 button:hover {
   background-color: #218838;
-}
-
-.table-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 table {
@@ -101,197 +113,7 @@ th {
   font-weight: bold;
 }
 
-.estado-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.estado-btn:hover {
-  background-color: #0056b3;
-}
-
-.estado-menu {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  padding: 10px;
-}
-
-.estado-menu button {
-  display: block;
-  width: 100%;
-  padding: 8px;
-  text-align: left;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  cursor: pointer;
-}
-
-.estado-menu button:hover {
-  background-color: #f1f1f1;
-}
-
-.otro-input {
-  display: none;
-  width: 100%;
-  padding: 5px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.estado-registrado {
-  background-color: #d4edda;
-}
-
-.estado-bloqueado {
-  background-color: #f8d7da;
-}
-
-.estado-pendiente {
-  background-color: #fff3cd;
-}
-
-.estado-otro {
-  background-color: #f5d0f5;
-}
-
-#imeiModal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgb(255, 255, 255);
-  padding: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-#modalBackdrop {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-#imeiModal button {
-  margin-right: 10px;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.data-table th,
-.data-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
-}
-
-.data-table thead {
-  background-color: #c0e7f9;
-}
-
-.status.paid {
-  background-color: #4CAF50;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.btn {
-  background-color: #a0d4a0;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  text-align: center;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn:hover {
-  background-color: #82bf82;
-}
-
-.regisbut {
-  margin-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  font-size: 18px;
-  color: #333;
-  width: 100%;
-  background-color: #007bff;
-}
-
-.input-container {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.input-container input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.warning {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 105%;
-  background: red;
-  color: white;
-  padding: 5px 10px;
-  font-size: 12px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.5);
-  font-weight: bold;
-  text-align: center;
-  margin-top: 0px;
-}
-
-.confirmar-btn {
-  background-color: #28a745;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-.confirmar-btn:hover {
-  background-color: #218838;
-}
-
-/* Estilos para la ventana modal */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -299,71 +121,48 @@ th {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0,0,0,0.5);
   z-index: 1000;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
+  background: white;
+  padding: 25px;
   border-radius: 8px;
-  width: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
   position: relative;
 }
 
 .close {
-  color: #aaa;
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 20px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.close:hover {
-  color: #000;
-}
-
 .modal-buttons {
+  display: flex;
+  gap: 10px;
   margin-top: 20px;
-  text-align: right;
 }
 
-.modal-buttons button {
-  margin-left: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.modal-buttons button:nth-child(1) {
-  background-color: #007bff;
+.eliminar-btn {
+  background: #dc3545;
   color: white;
 }
 
-.modal-buttons button:nth-child(2) {
-  background-color: #dc3545;
-  color: white;
-}
-
-.modal-buttons button:nth-child(3) {
-  background-color: #6c757d;
-  color: white;
-}
-
-.modal-buttons button:hover {
-  opacity: 0.9;
-}
-#modalBackdrop {
+.modal-backdrop {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999; /* Un z-index menor que el de la ventana modal */
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
 }

@@ -1,7 +1,6 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . '/ORION_PROYECT/CONFIG/database.php';
 
-
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
@@ -44,34 +43,31 @@ if ($result->num_rows > 0) {
         $estadoClase = strtolower(str_replace(' ', '', $row['ESTADO']));
         $tiempoTranscurrido = calcularTiempoTranscurrido($row['ULTIMA_FECHA']);
         $imei = htmlspecialchars($row['IMEI'], ENT_QUOTES, 'UTF-8');
+        $nombre = htmlspecialchars($row['NOMBRE'], ENT_QUOTES, 'UTF-8');
+        $estado = htmlspecialchars($row['ESTADO'], ENT_QUOTES, 'UTF-8');
         
         echo "<tr class='estado-$estadoClase'>
-                <td>{$row['IMEI']}</td>
-                <td>{$row['NOMBRE']}</td>
+                <td>$imei</td>
+                <td>$nombre</td>
                 <td>
                   <div class='estado-container'>
-                    <button class='estado-btn' data-imei='{$imei}'>{$row['ESTADO']}</button>
-                    <button class='confirmar-btn' data-imei='{$imei}'>✓</button>
+                    <button class='estado-btn' data-imei='$imei'>$estado</button>
+                    <button class='confirmar-btn' data-imei='$imei'>✓</button>
                     <div class='estado-menu' style='display: none;'>
-                      <button class='cambiar-estado' data-estado='Pendiente' data-imei='{$imei}'>Pendiente</button>
-                      <button class='cambiar-estado' data-estado='Registrado' data-imei='{$imei}'>Registrado</button>
-                      <button class='cambiar-estado' data-estado='Bloqueado' data-imei='{$imei}'>Bloqueado</button>
-                      <button class='mostrar-otro' data-imei='{$imei}'>Otro</button>
+                      <button class='cambiar-estado' data-estado='Pendiente' data-imei='$imei'>Pendiente</button>
+                      <button class='cambiar-estado' data-estado='Registrado' data-imei='$imei'>Registrado</button>
+                      <button class='cambiar-estado' data-estado='Bloqueado' data-imei='$imei'>Bloqueado</button>
+                      <button class='mostrar-otro' data-imei='$imei'>Otro</button>
                       <input type='text' class='otro-input' placeholder='Ingrese otro estado' style='display: none;'>
                     </div>
                   </div>
                 </td>
-                <td>{$tiempoTranscurrido}</td>
+                <td>$tiempoTranscurrido</td>
                 <td>
-                  <button class='registrar-ahora' data-imei='{$imei}'>Registrar Ahora</button>
-                  <button class='info-btn' data-imei='{$imei}'>Info</button>
-                  <button class='checar-imei' data-imei='{$imei}'>Checar IMEI</button>
-                  <!-- Botón de eliminación -->
-                  <form action='/ORION_PROYECT/APP/CONTROLLERS/eliminar_registro.php' method='POST' style='display: inline;'>
-                    <input type='hidden' name='id' value='{$imei}'>
-                    <button type='submit' class='eliminar-btn' onclick='return confirm(\"¿Estás seguro de que deseas eliminar este registro?\");'>Eliminar</button>
-                  </form>
-                </td>
+          <button class='registrar-ahora' data-imei='$imei'>Registrar Ahora</button>  
+          <button class='btn-info info-btn' data-imei='$imei'>Info</button>
+          <button class='checar-imei' data-imei='$imei'>Checar IMEI</button>
+        </td>
               </tr>";
     }
 } else {

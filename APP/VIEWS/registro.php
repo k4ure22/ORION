@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/ORION_PROYECT/PUBLIC/style.css">
-  <script src="/ORION_PROYECT/PUBLIC/funciones.js"></script>
   <title>Formulario de Registro</title>
 </head>
 <body>
   <div class="main-layout">
-  <form action="/ORION_PROYECT/APP/CONTROLLERS/procesar_registro.php" method="POST">
+    <form action="/ORION_PROYECT/APP/CONTROLLERS/procesar_registro.php" method="POST">
       <h1 class="titulo-principal">REGISTRO DE IMEI</h1>
       <div class="input-container">
         <label for="imei">IMEI:</label>
@@ -58,25 +57,30 @@
           </tr>
         </thead>
         <tbody>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/ORION_PROYECT/APP/CONTROLLERS/mostrar_registros.php'; ?>
+          <?php include $_SERVER['DOCUMENT_ROOT'] . '/ORION_PROYECT/APP/CONTROLLERS/mostrar_registros.php'; ?>
         </tbody>
       </table>
     </div>
   </div>
-<!-- Ventana modal para mostrar la información completa -->
-<div id="infoModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Información Completa</h2>
-    <div id="modal-info"></div>
-    <div class="modal-buttons">
-      <button onclick="editarRegistro()">Editar</button>
-      <button onclick="eliminarEquipo('IMEI_DEL_EQUIPO')">Eliminar</button>
+
+  <!-- Ventana modal -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Información Completa</h2>
+      <div id="modal-info"></div>
+      <div class="modal-buttons">
+        <button id="btnEditar">Editar</button>
+        <form id="eliminarForm" action="/ORION_PROYECT/APP/CONTROLLERS/eliminar_registro.php" method="POST">
+          <input type="hidden" name="id" id="modalImei">
+          <button type="submit" class="eliminar-btn">Eliminar</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Backdrop (fondo oscuro) -->
-<div id="modalBackdrop" class="modal-backdrop"></div>
+  <div id="modalBackdrop" class="modal-backdrop"></div>
+
+  <script src="/ORION_PROYECT/PUBLIC/funciones.js"></script>
 </body>
 </html>
