@@ -83,7 +83,7 @@ input[type="tel"] {
 }
 
 button {
-  background-color: #28a745;
+  background-color: #52e2a6;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -166,3 +166,16 @@ th {
   background: rgba(0,0,0,0.5);
   z-index: 999;
 }
+.estado-btn.estado-registrado {
+  background-color: #16a34a;
+  color: white;
+}
+.estado-btn.estado-pendiente {
+  background-color: #f59e0b;
+  color: white;
+}
+.estado-btn.estado-bloqueado {
+  background-color: #dc2626;
+  color: white;
+}
+

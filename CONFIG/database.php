@@ -2,7 +2,7 @@
 $host = 'localhost:3307';
 $usuario = 'root';
 $contraseña = '12345';
-$baseDatos = 'ORION';
+$baseDatos = 'ORION_BD';
 
 $conn = new mysqli($host, $usuario, $contraseña, $baseDatos);
 

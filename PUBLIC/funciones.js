@@ -150,4 +150,44 @@ document.addEventListener('DOMContentLoaded', function() {
   validarCampo('imei', 'imeiWarning', 15);
   validarCampo('numero', 'numeroWarning', 10);
   validarCampo('otro_imei', 'otroImeiWarning', 15);
+});document.addEventListener('click', function (e) {
+  if (e.target.classList.contains('cambiar-estado')) {
+    const nuevoEstado = e.target.dataset.estado;
+    const imei = e.target.dataset.imei;
+
+    fetch('/ORION_PROYECT/CONTROLLER/actualizar_estado.php', {
+      method: 'POST',
+      body: JSON.stringify({ imei, estado: nuevoEstado }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        const btn = document.querySelector(`.estado-btn[data-imei="${imei}"]`);
+        const fila = btn.closest('tr');
+
+        // ACTUALIZA TEXTO
+        btn.textContent = nuevoEstado;
+
+        // ACTUALIZA CLASES
+        const clasesEstado = ['estado-registrado', 'estado-pendiente', 'estado-bloqueado'];
+
+        // QUITA clases anteriores
+        clasesEstado.forEach(c => {
+          btn.classList.remove(c);
+          fila.classList.remove(c);
+        });
+
+        // AGREGA nueva clase
+        const nuevaClase = `estado-${nuevoEstado.toLowerCase().replace(/\s/g, '')}`;
+        btn.classList.add(nuevaClase);
+        fila.classList.add(nuevaClase);
+
+        console.log(`✅ Estado actualizado a ${nuevoEstado}, clase aplicada: ${nuevaClase}`);
+      } else {
+        console.error('⚠️ Error al actualizar:', data.error);
+      }
+    })
+    .catch(err => console.error('❌ Error de red:', err));
+  }
 });

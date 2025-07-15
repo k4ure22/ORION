@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
                 <td>$nombre</td>
                 <td>
                   <div class='estado-container'>
-                    <button class='estado-btn' data-imei='$imei'>$estado</button>
+                    <button class='estado-btn estado-$estadoClase' data-imei='$imei' data-estado='$estado'>$estado</button>
                     <button class='confirmar-btn' data-imei='$imei'>✓</button>
                     <div class='estado-menu' style='display: none;'>
                       <button class='cambiar-estado' data-estado='Pendiente' data-imei='$imei'>Pendiente</button>
